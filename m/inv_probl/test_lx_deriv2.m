@@ -9,7 +9,7 @@ n = 3e2
 example = 1%[1:3]
 [A,b,x] = deriv2(n,example);
 % Check condition number of A, 
-% A is mildly bad condiotioned.
+% A is mildly bad conditioned.
 cond_A = cond(A)
 
 % figure
