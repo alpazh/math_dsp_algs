@@ -3,7 +3,7 @@ close all
 clear all
 clc
 % Kay, Estimation Theory, Chapter 11, p.347, Example 11.1:
-% Estimate amlitude of sum sin+cos signals of the same frequency in the
+% Estimate amplitude of sum sin+cos signals of the same frequency in the
 % AWGN.
 
 % rng(123)
