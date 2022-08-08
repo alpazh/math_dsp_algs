@@ -7,7 +7,7 @@ clc
 % AWGN.
 
 % rng(123)
-N = 1e4;
+N = 1e3;
 sigma = 9;
 a = 1;
 b = 3;
@@ -28,8 +28,9 @@ if N < 1e4
     mu_theta = [0 0]';
     C_theta = eye(2)*sigma_theta^2;
     C_w = eye(length(w))*(sigma^2);
+    H = [cos(2*pi*f0*t) sin(2*pi*f0*t)];
     size(C_w)
     theta_hat_gen_eq = al_est_bayes_mmse_linear_model(x,H,mu_theta,C_theta,C_w)
 end
-
+theta_hat
 return
