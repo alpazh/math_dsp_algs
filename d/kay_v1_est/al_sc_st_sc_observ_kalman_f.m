@@ -46,5 +46,4 @@ for k = 2:N
     MMSE_v(2*k) = M_n_n;
 end
 
-
 end
