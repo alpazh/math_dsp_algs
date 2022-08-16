@@ -3,7 +3,7 @@ close all
 clear all
 clc
 % Kay, Estimation Theory, Chapter 13, p.436, 
-% Example 13.2 Scalar State Scalar Observation Kalman Filter
+% Example 13.3 Time-Varying Channel Estimation based on Vector Kalman Filter
 
 %% State model:
 p = 2;% state model dimension
