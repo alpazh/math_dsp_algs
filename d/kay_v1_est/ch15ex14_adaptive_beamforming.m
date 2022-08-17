@@ -10,21 +10,20 @@ F0 = 3e8;%carrier frequency
 d = 0.125;%sensors spacing
 c = 3e8;%propagation speed
 beta = pi/3;%angle of arrival
-fs = F0*(d/c)*cos(beta);%spatial frequency
 phi = 0;%initial phase
 t0 = 0;%initial time
 A = 1.234;%signal amplitude
+
 phi_prime = -2*pi*F0*t0+phi;
 A_tilde = A*exp(1j*phi_prime);
+
+fs = F0*(d/c)*cos(beta);%spatial frequency
 e = exp(1j*2*pi*fs*(0:M-1)');
 
-%signal vector snapshot at the M sensors
 t = 0;
 %noiseless signal
 s_tilde_t = A_tilde*exp(1j*2*pi*F0*t)*e;
 %noise
-%TODO: add correlated noise generation
-
 
 % define number of dimensions M of vector to generate
 % M = 3
@@ -45,6 +44,7 @@ w_tilde_t = al_gen_corr_cwgn(C,N);
 % C = eye(M)*sigma_w;
 % w_tilde_t = (randn(M,1) + 1j*randn(M,1))*sigma_w;
 
+%signal vector snapshot at the M sensors
 x_tilde_t = s_tilde_t + w_tilde_t;
 
 figure
@@ -61,16 +61,17 @@ plot(real(x_tilde_t),'b- .'),grid on,hold on
 plot(imag(x_tilde_t),'r- .'),grid on,hold off
 title('Sensors output')
 
+M = 32;%number of sensors
+F0 = 3e8;%carrier frequency
+d = 0.125;%sensors spacing
+c = 3e8;%propagation speed
+beta = pi/3;%angle of arrival
+phi = 0;%initial phase
+t0 = 0;%initial time
+A = 1.234;%signal amplitude
+
 %optimal beamformer
-%minimum variance distortionless response beamformer
-%minimize a'*C*a subject to constraint e'*a = 1
-% Ci = inv(C);
-% Ci_e = inv(C)*e
-Ci_e = C\e;
-%beamformer optimal coefficients
-a_opt = (Ci_e)/(e'*Ci_e);
-%beamformer output
-y_tilde_t = a_opt'*x_tilde_t;
+[y_tilde_t,a_opt] = al_mvdr_beamformer(x_tilde_t,C,F0,d,c,beta);
 
 figure
 plot(real(a_opt),'b- .'),grid on,hold on
