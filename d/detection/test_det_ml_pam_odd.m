@@ -3,6 +3,13 @@ close all
 clear
 clc
 
+% PAM-M (for odd value of M) ML Detector
+% This is Min prob of error (MPOE) detector
+% which is reduced to MAP detector
+% which is reduced to ML Detector
+%
+% Reference: Kay, Detection Theory, example 3.6
+
 Nb = 1e5;
 OSF = 5
 N = Nb*OSF;

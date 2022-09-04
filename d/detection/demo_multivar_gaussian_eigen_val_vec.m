@@ -3,6 +3,9 @@ close all
 clear
 clc
 
+% Demo of Gaussian Multivariable Random Values 
+% Covariance Matrix Eigenvalues and Eigenvectors
+
 N = 1e6';
 sigma_n = 1;
 %% generate WSS process realization

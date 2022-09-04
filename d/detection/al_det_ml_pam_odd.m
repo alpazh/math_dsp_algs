@@ -14,6 +14,8 @@ function [s_symb_hat,x_mean] = al_det_ml_pam_odd(x,OSF,M)
 % s_symb_hat - detected symbols,
 % x_mean - estimated mean values (per symbol).
 % Test example of usage is in d\detection\test_det_ml_pam_odd.m
+%
+% Reference: Kay, Detection Theory, example 3.6
 
 Nb = length(x)/OSF;
 x_symb = reshape(x,OSF,Nb);
