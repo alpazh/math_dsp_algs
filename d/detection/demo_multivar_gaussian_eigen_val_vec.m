@@ -7,14 +7,14 @@ N = 1e6';
 sigma_n = 1;
 %% generate WSS process realization
 n = randn(N,1)*sigma_n;
-Nma = 8;
+Nma = 16;
 % h = ones(Nma,1)/Nma;
 h = [1.0:-0.1:0.1]';
 nc = filter(h,1,n);
-% al_gen_corr_wgn(C,N);
+
 
 %% Estimate correlation
-Mlags = 1*Nma-1;
+Mlags = 2*Nma-1;
 % Mlags = N;
 r_nc = xcorr(nc,Mlags);
 r_nc_one_sided = r_nc(Mlags+1:end,1);
@@ -65,6 +65,7 @@ d = zeros(NR,1);
 
 SF = 1/(sqrt(NR))
 V = al_gen_dftmtx(NR);
+V = V*SF;
 
 % R*V-V*D
 D = V'*R*V;
