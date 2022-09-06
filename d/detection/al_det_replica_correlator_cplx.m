@@ -11,7 +11,6 @@ function [Tx,thresh] = al_det_replica_correlator_cplx(s,x,var_wgn,Pfa)
 % Output paramaters:
 % Tx - Test Statistic,
 % thresh - THreshold gamma for the given Pfa.
-% Test example of usage is in d\detection\test_det_ml_pam_odd.m
 %
 % Reference:
 % Kay, Fundamentals of Statistical Signal Processing,
