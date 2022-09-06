@@ -1,13 +1,12 @@
 function [Tx,thresh] = al_det_generalized_matched_filter_cplx(s,x,Pfa,C)
-% [Tx,thresh] = al_det_generalized_matched_filter_cplx(s,x,var_wgn,Pfa)
+% [Tx,thresh] = al_det_generalized_matched_filter_cplx(s,x,Pfa,C)
 % Complex Generalized Matched Filter Detector for deterministic signals
 %
 % Input paramaters:
 % s - known deterministic signal to be detected,
 % x - input signal x,
-% var_wgn - known WGN variance
-% Pfa - required Probability of the False Alarm
-% C - Noise Covariance Matrix
+% Pfa - required Probability of the False Alarm,
+% C - Noise Covariance Matrix.
 %
 % Output paramaters:
 % Tx - Test Statistic,
