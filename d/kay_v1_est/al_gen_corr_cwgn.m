@@ -19,6 +19,6 @@ u = randn(M,N) + randn(M,N)*1j;
 F = chol(C);
 F = F.';
 % compute correlated random vectors
-w = F*u;
+w = F*u/(sqrt(2));
 
 end
