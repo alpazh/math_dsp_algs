@@ -10,7 +10,7 @@ function [Tx,thresh] = al_det_generalized_matched_filter_cplx(s,x,Pfa,C)
 %
 % Output paramaters:
 % Tx - Test Statistic,
-% thresh - THreshold gamma for the given Pfa.
+% thresh - Threshold gamma for the given Pfa.
 %
 % Reference:
 % Kay, Fundamentals of Statistical Signal Processing,
