@@ -4,7 +4,6 @@ clc
 
 nu=1;lambda=2;x=0.5;epsilon=0.0001;
 P = al_q_chipr2_func(nu,lambda,x,epsilon)
-Pk = Qchipr2(nu,lambda,x,epsilon)
 P_expected = 0.7772;
 err1 = P_expected - P
 
