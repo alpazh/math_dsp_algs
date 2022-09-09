@@ -3,19 +3,23 @@ close all
 clear
 clc
 
-% Test for GLRT Detector which detects a known deterministic signal with unknown amplitude.
+% Test for GLRT Detector which detects complex exponent with known frequency and 
+% unknown amplitude.
 % Reference:
 % Kay, Fundamentals of Statistical Signal Processing,
 % Volume III Practical Algorithm Development,
-% Algorithm 12.19 – Unknown complex amplitude (also Algorithm 10.6)
+% Algorithm 12.20 – Unknown complex amplitude of complex exponent (also Algorithm 10.6)
 
 %% Generate signal
 Fs = 1;
 N = 2^6;
 sigma_n = 3;
 var_wgn = sigma_n.^2;
-
-s = hamming(N)*exp(1j*pi/3);
+F1 = Fs/N;
+t =(0:N-1)';
+A = ceil(rand(1,1)*4+1)
+phi = pi*5/3;
+s = A*exp(1j*(2*pi*F1*t+phi));
 w = randn(N,1)*sigma_n/sqrt(2) + 1j*randn(N,1)*sigma_n/sqrt(2);
 x = s + w;
 
