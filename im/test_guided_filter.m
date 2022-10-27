@@ -24,4 +24,17 @@ image(IMMF),colormap('gray')
 figure
 image(IMF),colormap('gray')
 
+%% Test linearity
+N = 256;
+A = randn(N,N);
+B = randn(N,N);
+C = A+B;
+AG = imguidedfilter(A);
+BG = imguidedfilter(B);
+CG = imguidedfilter(C);
+D = C-CG;
+err_norm = norm(D);
+disp(['err_norm = ' num2str(err_norm)])
+% figure
+% imagesc(D)
 return
