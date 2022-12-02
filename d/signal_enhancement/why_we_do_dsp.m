@@ -1,4 +1,4 @@
-%Single-channel Signal Enhancement in the Time Domain
+%Little demo of the DSP strength
 close all
 clear
 clc
