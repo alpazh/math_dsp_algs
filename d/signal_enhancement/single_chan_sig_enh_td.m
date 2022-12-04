@@ -23,7 +23,7 @@ Len_to_plot = 60;
 Np = 5*48e3;
 Fs = 48e3;
 Ts = 1/Fs;
-F0 = 10e3%(2/5)*Fs/2
+F0 = 4.8e3%(2/5)*Fs/2
 A = 0.5
 phi_x = rand(1,1)*2*pi
 t = (Ts:Ts:Np*Ts)';
@@ -144,6 +144,10 @@ size(Qx_1)
 figure
 plot(lambda),grid on
 title('Rx eigenvalues')
+
+figure
+plot(Qx_1,'. -'),grid on
+title('Rx eigenvectors corresponding to the signal subspace')
 
 Rv_i = inv(Rv);
 h_MVDR = Rv_i*Qx_1*inv(Qx_1'*Rv_i*Qx_1)*Qx_1'*i_i;
