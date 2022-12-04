@@ -15,7 +15,7 @@ L = 32
 L_1 = L - 1
 
 % plotting params
-Nb = L+1;
+Nb = 2*L+1;
 Len_to_plot = 60;
 
 % the desired signal is a harmonic random process
@@ -165,17 +165,29 @@ title('MVDR filter coefficients computed by two different ways')
 size(h_MVDR)
 x_est_MVDR = filter(h_MVDR,1,y);
 
+% TODO add maximum SNR filter
+Rv_i_Rx = Rv_i*Rx;
+[V2, Lambda2] = eig(Rv_i_Rx);
+lambda2 = diag(Lambda2);
+[Max_lambda2,Indx_lambda2_max] = max(lambda2)
+t1 = V2(:,Indx_lambda2_max);
+Zeta = 1/2; % any real value greater than zero
+h_max_snr = Zeta*t1;
+x_est_max_snr = filter(h_max_snr,1,y);
+
 figure
 plot(h_w,'r- s'),grid on,hold on
 plot(h_trade_off,'g- o'),hold on
-plot(h_MVDR,'b- d'),hold off
-legend({'Wiener','Trade-off','MVDR'})
+plot(h_MVDR,'b- d'),hold on
+plot(h_max_snr,'k- x'),hold off
+legend({'Wiener','Trade-off','MVDR','Max SNR'})
 title('Filters coefficients comparison')
 
 figure
 plot(x_est(Nb+1:Nb+Len_to_plot),'r- s'),grid on,hold on
 plot(x_est_trade_off(Nb+1:Nb+Len_to_plot),'g- o'),hold on
-plot(x_est_MVDR(Nb+1:Nb+Len_to_plot),'b- d'),hold off
-legend({'Wiener','Trade-off','MVDR'})
+plot(x_est_MVDR(Nb+1:Nb+Len_to_plot),'b- d'),hold on
+plot(x_est_max_snr(Nb+1:Nb+Len_to_plot),'k- x'),hold off
+legend({'Wiener','Trade-off','MVDR','Max SNR'})
 title('Filters output signals comparison')
 
