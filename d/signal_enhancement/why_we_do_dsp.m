@@ -88,6 +88,7 @@ Rx_p_v = Rx + Rv;
 %imagesc(Ry)
 figure
 imagesc(Rx_p_v)
+title('This matrix will help us to find the signal')
 
 %Ry./Rx_p_v
 
@@ -110,10 +111,6 @@ pause
 %plot(x,'b- s'),grid on,hold on
 %plot(x_est,'r- x'),grid on,hold off
 SNRout_est = 20*log10(rms(x)/rms(x_est-x))
-% Y*H = X
-% Y*Y*H = Y*X
-% YY*H = YX
-% H = inv(YY)*YX
 
 % Wiener filter another formulation
 ccf_yx = xcorr(y,x,L_1);
